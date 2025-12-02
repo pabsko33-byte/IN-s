@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SIC – Outils pédagogiques</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-bar">
+        <div class="brand-block">
+          <div class="brand-logo">SIC</div>
+          <div class="brand-text">
+            <div class="brand-name">Student Investment Club</div>
+            <div class="brand-sub">Markets &amp; Macro Studio · Bordeaux</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">Dashboard</a>
+          <a href="outils.html" class="nav-link is-active">Outils</a>
+          <a href="club.html" class="nav-link">Club &amp; programme</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-wrap">
+        <section>
+          <div class="kicker">Simulation &amp; assistant</div>
+          <h1>Simuler un horizon, structurer une stratégie.</h1>
+          <p class="text-muted">
+            L’objectif n’est pas de prédire un rendement, mais de comprendre
+            comment capital initial, versements et horizon interagissent. La
+            page combine une simulation chiffrée et un assistant de base pour
+            clarifier les notions.
+          </p>
+        </section>
+
+        <!-- SIMU -->
+        <section class="section-gap panel">
+          <div class="form-grid">
+            <div>
+              <h2>Simulation d’investissement (intérêts composés).</h2>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-initial">
+                  Capital de départ (€)
+                </label>
+                <input
+                  id="sim-initial"
+                  type="number"
+                  class="form-input"
+                  placeholder="Ex : 2000"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-monthly">
+                  Versement mensuel (€)
+                </label>
+                <input
+                  id="sim-monthly"
+                  type="number"
+                  class="form-input"
+                  placeholder="Ex : 150"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-years">
+                  Horizon de placement (années)
+                </label>
+                <input
+                  id="sim-years"
+                  type="number"
+                  class="form-input"
+                  placeholder="Ex : 10"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sim-rate">
+                  Rendement annuel estimé (scénario médian, en %)
+                </label>
+                <input
+                  id="sim-rate"
+                  type="number"
+                  class="form-input"
+                  placeholder="Ex : 5"
+                />
+              </div>
+
+              <button id="sim-run" class="btn-main">
+                Lancer la simulation
+              </button>
+
+              <p class="text-muted" style="margin-top: 0.7rem; font-size: 0.8rem;">
+                Calcul mensuel sur base d’intérêts composés. Trois scénarios
+                sont générés autour du taux médian.
+              </p>
+            </div>
+
+            <div>
+              <h2>Résultats (pessimiste / médian / optimiste).</h2>
+
+              <div class="sim-results-grid">
+                <div class="sim-box">
+                  <div class="sim-title">Pessimiste</div>
+                  <div>Total versé : <span id="pess-total">–</span></div>
+                  <div>Valeur projetée : <span id="pess-value">–</span></div>
+                  <div class="sim-value">
+                    Part de performance : <span id="pess-perf">–</span>
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="sim-title">Médian</div>
+                  <div>Total versé : <span id="med-total">–</span></div>
+                  <div>Valeur projetée : <span id="med-value">–</span></div>
+                  <div class="sim-value">
+                    Part de performance : <span id="med-perf">–</span>
+                  </div>
+                </div>
+                <div class="sim-box">
+                  <div class="sim-title">Optimiste</div>
+                  <div>Total versé : <span id="opt-total">–</span></div>
+                  <div>Valeur projetée : <span id="opt-value">–</span></div>
+                  <div class="sim-value">
+                    Part de performance : <span id="opt-perf">–</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sim-box">
+                <div class="sim-title">Courbe synthétique (ordre de grandeur)</div>
+                <div class="sim-bars">
+                  <div class="bar">
+                    <div class="bar-fill" id="bar-pess" style="height: 0%"></div>
+                  </div>
+                  <div class="bar">
+                    <div class="bar-fill" id="bar-med" style="height: 0%"></div>
+                  </div>
+                  <div class="bar">
+                    <div class="bar-fill" id="bar-opt" style="height: 0%"></div>
+                  </div>
+                </div>
+                <p class="text-muted" style="font-size: 0.76rem; margin-top: 0.3rem;">
+                  Visualisation simplifiée. Pour un travail précis, il faudra
+                  brancher un outil de graphe ou exporter les données.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ASSISTANT -->
+        <section class="section-gap panel-flat">
+          <div class="assistant-grid">
+            <div>
+              <h2>Assistant débutant.</h2>
+              <p class="text-muted">
+                L’assistant n’a pas vocation à donner une recommandation
+                personnalisée, mais à clarifier quelques notions&nbsp;:
+                livret vs ETF, horizon, place de la crypto, etc. À terme, ce
+                composant pourra être relié à une API d’IA côté serveur.
+              </p>
+
+              <div class="assistant-log" id="assistant-log">
+                <div class="msg">
+                  <div class="msg-bubble">
+                    Bonjour, je suis l’assistant du SIC. Pose une question
+                    courte (ex&nbsp;: «&nbsp;livret vs ETF&nbsp;?&nbsp;»,
+                    «&nbsp;horizon de placement&nbsp;?&nbsp;»).
+                  </div>
+                </div>
+              </div>
+
+              <div class="assistant-input-row">
+                <input
+                  id="assistant-input"
+                  class="assistant-input"
+                  placeholder="Ex : livret ou ETF pour 10 ans ?"
+                />
+                <button id="assistant-send" class="btn-main">
+                  Envoyer
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <h2>Raccourcis de questions fréquentes.</h2>
+              <p class="text-muted" style="margin-bottom: 0.7rem;">
+                Clique sur un thème pour pré-remplir le chat avec une question
+                typique. Les réponses sont fixes pour l’instant, mais la
+                structure est prête pour une API d’IA.
+              </p>
+
+              <div class="assistant-topics">
+                <button class="topic-btn" data-topic="livret-etf">
+                  Livret vs ETF long terme
+                </button>
+                <button class="topic-btn" data-topic="horizon">
+                  Horizon de placement
+                </button>
+                <button class="topic-btn" data-topic="risque">
+                  Tolérance au risque
+                </button>
+                <button class="topic-btn" data-topic="crypto">
+                  Place de la crypto
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      SIC – Student Investment Club · Outils pédagogiques, non contractuels.
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
