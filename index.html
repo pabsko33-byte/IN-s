@@ -1,10 +1,24 @@
-<!DOCTYPE html>
+jk<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <title>SIC – Dashboard marchés</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+   <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        ScrollReveal().reveal('.reveal', {
+            distance: '40px',
+            duration: 900,
+            easing: 'ease-out',
+            origin: 'bottom',
+            interval: 120
+        });
+    </script>
+ </body>
+</html>
   <body>
     <header class="site-header">
       <div class="nav-bar">
@@ -36,7 +50,7 @@
               deviner le prochain «&nbsp;coup&nbsp;».
             </p>
 
-            <div class="chip-row">
+            <div class="chip-row reveal">
               <div class="chip">Indices &amp; ETF</div>
               <div class="chip">Taux, banques centrales</div>
               <div class="chip">Macro &amp; décisions publiques</div>
@@ -69,7 +83,7 @@
           </div>
 
           <!-- Bloc vue marché + pseudo graphique -->
-          <div class="panel">
+          <div class="panel reveal">
             <h3>Vue marché SIC (maquette)</h3>
             <p class="text-muted" style="font-size: 0.8rem; margin-bottom: 0.9rem;">
               Quelques actifs suivis pour travailler la lecture&nbsp;: niveaux,
@@ -156,7 +170,7 @@
 
         <!-- SECTION FAQ / MACRO -->
         <section class="section-gap grid-50">
-          <div class="panel-flat">
+          <div class="panel-flat reveal">
             <h2>Questions de marché qu’on travaille réellement.</h2>
             <p class="text-muted">
               Pas de check-list de « bons plans », mais des situations que
