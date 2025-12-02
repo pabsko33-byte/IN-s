@@ -170,3 +170,26 @@ if (assistantSend && assistantInput) {
     });
   });
 }
+// ========== SCROLL REVEAL ==========
+
+const sicRevealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const el = entry.target;
+
+      if (entry.isIntersecting) {
+        el.classList.add('is-visible');
+        // Si tu veux que ça ne se joue qu'une seule fois :
+        sicRevealObserver.unobserve(el);
+      }
+    });
+  },
+  {
+    threshold: 0.15, // l’élément devient visible quand ~15 % est dans l’écran
+  }
+);
+
+// On cible tous les éléments à animer
+document.querySelectorAll('.reveal').forEach((el) => {
+  sicRevealObserver.observe(el);
+});
