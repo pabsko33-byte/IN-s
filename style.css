@@ -226,19 +226,18 @@ h3 {
 /* ============ COMPONENTS ============ */
 
 .panel {
-  background: radial-gradient(circle at 0 0, #1f2937 0, transparent 55%),
-    var(--bg-panel);
+  background: var(--bg-panel);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-soft);
-  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(39, 42, 60, 0.8);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.6);
+  padding: 1.3rem 1.4rem;
 }
 
 .panel-flat {
-  background: var(--bg-panel-alt);
+  background: #0b0d19;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-soft);
-  padding: 1.3rem 1.4rem;
+  border: 1px solid rgba(39, 42, 60, 0.7);
+  padding: 1.1rem 1.2rem;
 }
 
 .chip-row {
@@ -723,7 +722,34 @@ h3 {
   color: var(--text-muted);
   text-align: center;
 }
+/* ========== ANIMATIONS ========== */
 
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(6px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    filter 0.6s ease-out;
+}
+
+/* état visible quand l’élément entre dans le viewport */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Accessibilité : si l’utilisateur désactive les animations */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
 /* ============ RESPONSIVE ============ */
 
 @media (max-width: 900px) {
